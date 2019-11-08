@@ -27,12 +27,14 @@ GDPR compliance. For example,
 ```elixir
 email = "morty@yahoo.com"
 Pseudo.conceal(email)
-"m****@yahoo.com"
+=> "m****@yahoo.com"
 ```
 
 Or for concealing names of persons.
 ```elixir
 name = "Rick Sanchez"
 Pseudo.conceal(name)
-"R***********"
+=> "R***********"
 ```
+
+Docs can be found at [https://hexdocs.pm/pseudo](https://hexdocs.mp/pseudo)
