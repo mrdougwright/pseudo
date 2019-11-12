@@ -5,7 +5,7 @@ defmodule PseudoTest do
   describe "conceal/2" do
     test "for email, replaces all but first character and domain with asteriks" do
       email = "gdpr_rules@gmail.com"
-      assert Pseudo.conceal(email) == "g*********@gmail.com"
+      assert Pseudo.conceal(email) == "g*********@g****.com"
     end
 
     test "for string, replaces all but first character with asteriks" do

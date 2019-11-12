@@ -9,7 +9,7 @@ defmodule Pseudo do
   ## Examples
       iex> email = "rick_and_morty@gmail.com"
       iex> Pseudo.conceal(email)
-      "r*************@gmail.com"
+      "r*************@g****.com"
   """
   def conceal(string) do
     case String.contains?(string, "@") do
@@ -20,17 +20,12 @@ defmodule Pseudo do
 
   defp conceal_email(email) do
     [name, domain] = String.split(email, "@")
-    {first_char, obfuscated} = obfuscate(name)
-    "#{first_char}#{obfuscated}@#{domain}"
+    [name_level, top_level] = String.split(domain, ".")
+    "#{conceal_text(name)}@#{conceal_text(name_level)}.#{top_level}"
   end
 
   defp conceal_text(text) do
-    {first_char, obfuscated} = obfuscate(text)
-    "#{first_char}#{obfuscated}"
-  end
-
-  defp obfuscate(text) do
     {first_char, rest} = String.split_at(text, 1)
-    {first_char, String.replace(rest, ~r(.), "*")}
+    first_char <> String.replace(rest, ~r(.), "*")
   end
 end

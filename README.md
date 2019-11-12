@@ -22,7 +22,7 @@ GDPR compliance. For example:
 ```elixir
 email = "morty@yahoo.com"
 Pseudo.conceal(email)
-=> "m****@yahoo.com"
+=> "m****@y****.com"
 ```
 
 Or for concealing names of persons.
