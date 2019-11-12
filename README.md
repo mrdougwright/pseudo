@@ -9,7 +9,7 @@ The Elixir drop can be installed by adding `pseudo` to your list of dependencies
 ```elixir
 def deps do
   [
-    {:pseudo, "~> 0.1.0"}
+    {:pseudo, "~> 0.2.0"}
   ]
 end
 ```
