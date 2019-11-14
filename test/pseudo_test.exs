@@ -3,12 +3,17 @@ defmodule PseudoTest do
   doctest Pseudo
 
   describe "conceal/2" do
-    test "for email, replaces all but first character and domain with asteriks" do
+    test "for email, first character with set number of asterisks" do
       email = "gdpr_rules@gmail.com"
-      assert Pseudo.conceal(email) == "g*********@g****.com"
+      assert Pseudo.conceal(email) == "g*******@g*****.com"
     end
 
-    test "for string, replaces all but first character with asteriks" do
+    test "for email, can replace all but first characters" do
+      email = "gdpr_rules@gmail.com"
+      assert Pseudo.conceal(email, [%{format: :not_anonymous}]) == "g*********@g****.com"
+    end
+
+    test "for string, replaces all but first character with asterisks" do
       name = "rick sanchez"
       assert Pseudo.conceal(name) == "r***********"
     end
