@@ -11,7 +11,7 @@ defmodule Pseudo do
       iex> Pseudo.conceal(email)
       "r*******@g*****.com"
   """
-  def conceal(string, options \\ [%{format: :anonymous}])
+  def conceal(string, options \\ %{format: :anonymous})
 
   def conceal(string, options) do
     case String.contains?(string, "@") do
@@ -20,7 +20,7 @@ defmodule Pseudo do
     end
   end
 
-  defp conceal_email(email, [%{format: :anonymous}]) do
+  defp conceal_email(email, %{format: :anonymous}) do
     [name, domain] = String.split(email, "@")
     [_, top_level] = String.split(domain, ".")
     {first_char, _} = String.split_at(name, 1)

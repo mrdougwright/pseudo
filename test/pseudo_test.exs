@@ -10,7 +10,7 @@ defmodule PseudoTest do
 
     test "for email, can replace all but first characters" do
       email = "gdpr_rules@gmail.com"
-      assert Pseudo.conceal(email, [%{format: :not_anonymous}]) == "g*********@g****.com"
+      assert Pseudo.conceal(email, %{format: :not_anonymous}) == "g*********@g****.com"
     end
 
     test "for string, replaces all but first character with asterisks" do
