@@ -13,6 +13,11 @@ defmodule PseudoTest do
       assert Pseudo.conceal(email, %{format: :not_anonymous}) == "g*********@g****.com"
     end
 
+    test "for email, can handle multi dot domains" do
+      email = "peter@hotmail.co.uk"
+      assert Pseudo.conceal(email) == "p*******@h*****.co.uk"
+    end
+
     test "for string, replaces all but first character with asterisks" do
       name = "rick sanchez"
       assert Pseudo.conceal(name) == "r***********"

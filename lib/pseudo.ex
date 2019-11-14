@@ -22,7 +22,7 @@ defmodule Pseudo do
 
   defp conceal_email(email, %{format: :anonymous}) do
     [name, domain] = String.split(email, "@")
-    [_, top_level] = String.split(domain, ".")
+    [_, top_level] = String.split(domain, ".", parts: 2)
     {first_char, _} = String.split_at(name, 1)
     {email_char, _} = String.split_at(domain, 1)
     "#{first_char}*******@#{email_char}*****.#{top_level}"
@@ -30,7 +30,7 @@ defmodule Pseudo do
 
   defp conceal_email(email, _) do
     [name, domain] = String.split(email, "@")
-    [name_level, top_level] = String.split(domain, ".")
+    [name_level, top_level] = String.split(domain, ".", parts: 2)
     "#{conceal_text(name)}@#{conceal_text(name_level)}.#{top_level}"
   end
 
