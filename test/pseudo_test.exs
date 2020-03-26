@@ -22,5 +22,10 @@ defmodule PseudoTest do
       name = "rick sanchez"
       assert Pseudo.conceal(name) == "r***********"
     end
+
+    test "for string, correctly obfuscates usernames with @ symbols" do
+      username = "Mr.H@ndy"
+      assert Pseudo.conceal(username) == "M*******"
+    end
   end
 end

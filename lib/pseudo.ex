@@ -10,11 +10,15 @@ defmodule Pseudo do
       iex> email = "rick_and_morty@gmail.com"
       iex> Pseudo.conceal(email)
       "r*******@g*****.com"
+
+      iex> username = "pickl3_r@ck"
+      iex> Pseudo.conceal(username)
+      "p**********"
   """
   def conceal(string, options \\ %{format: :anonymous})
 
   def conceal(string, options) do
-    case String.contains?(string, "@") do
+    case is_email?(string) do
       true -> conceal_email(string, options)
       false -> conceal_text(string)
     end
@@ -37,5 +41,9 @@ defmodule Pseudo do
   defp conceal_text(text) do
     {first_char, rest} = String.split_at(text, 1)
     first_char <> String.replace(rest, ~r(.), "*")
+  end
+
+  defp is_email?(str) do
+    Regex.match?(~r/^(.+)@.+\.(.+)/, str)
   end
 end
